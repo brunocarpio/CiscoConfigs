@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AutoConfig</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>CONFIGURACIÓN CISCO</h1>
+
+    <div class="wrapper">
+        <div class="setup">
+            <div class="sdiv">
+                <div class="title">Direcciones IPv4</div>
+                <div class="containera">
+                    <table>
+                        <tr>
+                            <td class="tds">Interface</td>
+                            <td class="tds">
+                                <select id="sint4" onchange="selectloop('sint4','sspan4','sspanl4')">
+                                    <option value="Serial">Serial</option>
+                                    <option value="FastEthernet">FastEthernet</option>
+                                    <option value="Loopback">Loopback</option>
+                                </select>
+                                <span id="sspan4">
+                                    <select id="sint4n1">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <span>/</span>
+                                    <select id="sint4n2">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </span>
+                                <span id="sspanl4" style="display: none;">
+                                    <input type="text" id="sloop4" placeholder="<0-2147483647>">
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tds">Address</td>
+                            <td><input type="text" id="ipv4add" placeholder="A.B.C.D"></td>
+                            <td class="tds">Mask</td>
+                            <td><input type="text" id="mask" placeholder="A.B.C.D"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="containerb">
+                    <button class="button addButton" onclick="add4()">Añadir</button>
+                </div>
+            </div>
+            <div class="sdiv">
+                <div class="title">OSPFv2</div>
+                <div class="containera">
+                    <table>
+                        <tr>
+                            <td class="tds">Proccess-id</td>
+                            <td><input type="text" id="ospf2pid" placeholder="<1-65535>"></td>
+                        </tr>
+                            <td class="tds">Area-id</td>
+                            <td><input type="text" id="ospf2aid" placeholder="<0-4294967295>"></td>
+                        </tr>
+                        <tr>
+                            <td class="tds">Network</td>
+                            <td><input type="text" id="ospf2net" placeholder="A.B.C.D"></td>
+                            <td class="tds">Wildcard-mask</td>
+                            <td><input type="text" id="ospf2wild" placeholder="A.B.C.D"></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td class="tds">
+                                <span>Passive Interface</span>
+                            </td>
+                            <td colspan="2">
+                                <input type="checkbox" id="ospf2pintcheckbox"
+                                    onclick="displayElement('ospf2pintcheckbox','displayospf2pint')">
+                                <span id="displayospf2pint" style="visibility: hidden;">
+                                    <select id="ospf2pint">
+                                        <option value="Serial">Serial</option>
+                                        <option value="FastEthernet">FastEthernet</option>
+                                    </select>
+                                    <select id="ospf2pintn1">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <span>/</span>
+                                    <select id="ospf2pintn2">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tds">
+                                <span>Router-id</span>
+                            </td>
+                            <td colspan="2">
+                                <input type="checkbox" id="ospf2ridcheckbox"
+                                    onclick="displayElement('ospf2ridcheckbox','displayospf2rid')">
+                                <span id="displayospf2rid" style="visibility: hidden;">
+                                    <input type="text" id="ospf2rid" placeholder="A.B.C.D">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="containerb">
+                    <button class="button addButton" onclick="opsfv2()">Añadir</button>
+                </div>
+            </div>
+            <div class="sdiv">
+                <div class="title">Direcciones IPv6</div>
+                <div class="containera">
+                    <table>
+                        <tr>
+                            <td class="tds">Interface</td>
+                            <td>
+                                <select id="sint6">
+                                    <option value="Serial">Serial</option>
+                                    <option value="FastEthernet">FastEthernet</option>
+                                </select>
+                                <select id="sint6n1">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <span>/</span>
+                                <select id="sint6n2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tds">Address</td>
+                            <td><input type="text" id="ipv6add" placeholder="X:X:X:X::X/<0-128>"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="containerb">
+                    <button class="button addButton" onclick="add6()">Añadir</button>
+                </div>
+            </div>
+            <div class="sdiv">
+                <div class="title">OSPFv3</div>
+                <div class="containera">
+                    <table>
+                        <tr>
+                            <td class="tds">Proccess-id</td>
+                            <td><input type="text" id="ospf3pid" placeholder="<1-65535>"></td>
+                        </tr>
+                        <tr>
+                            <td class="tds">Area-id</td>
+                            <td><input type="text" id="ospf3aid" placeholder="<0-4294967295>"></td>
+                        </tr>
+                        <tr>
+                            <td class="tds">Interface</td>
+                            <td>
+                                <select id="ospf3int">
+                                    <option value="Serial">Serial</option>
+                                    <option value="FastEthernet">FastEthernet</option>
+                                </select>
+                                <select id="ospf3intn1">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <span>/</span>
+                                <select id="ospf3intn2">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tds">
+                                <span>Passive Interface</span>
+                            </td>
+                            <td colspan="2">
+                                <input type="checkbox" id="ospf3pintcheckbox"
+                                    onclick="displayElement('ospf3pintcheckbox','displayospf3pint')">
+                                <span id="displayospf3pint" style="visibility: hidden;">
+                                    <select id="ospf3pint">
+                                        <option value="Serial">Serial</option>
+                                        <option value="FastEthernet">FastEthernet</option>
+                                    </select>
+                                    <select id="ospf3pintn1">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <span>/</span>
+                                    <select id="ospf3pintn2">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tds">
+                                <span>Router-id</span>
+                            </td>
+                            <td colspan="2">
+                                <input type="checkbox" id="ospf3ridcheckbox"
+                                    onclick="displayElement('ospf3ridcheckbox','displayospf3rid')">
+                                <span id="displayospf3rid" style="visibility: hidden;">
+                                    <input type="text" id="ospf2rid" placeholder="A.B.C.D">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="containerb">
+                    <button class="button addButton" onclick="ospfv3()">Añadir</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="show" id="show">
+            <div>
+                <table id="tshow">
+                    <tr>
+                        <th id="initxt"></th>
+                    </tr>
+                </table>
+                <table id="tospf">
+                    <tr>
+                        <th id="ospfinit"></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var tshow = document.getElementById("tshow");
+        var tospf = document.getElementById("tospf");
+
+        function add4() {
+            var initxt = document.getElementById("initxt");
+            initxt.innerText = "configure terminal"
+
+            var interface = document.getElementById("sint4");
+            var int = interface.options[interface.selectedIndex].text;
+            var add = document.getElementById("ipv4add").value;
+            var mask = document.getElementById("mask").value;
+
+            var row = document.createElement("tr");
+            row.className += " trf";
+            var td1 = document.createElement("td");
+
+            if (int.localeCompare("Loopback") == 0) {
+                var sloop = document.getElementById("sloop4").value;
+                td1.innerText = "interface " + int + " " + sloop + "\nip address " + add + " " + mask;
+            } else {
+                var interfacen1 = document.getElementById("sint4n1");
+                var intn1 = interfacen1.options[interfacen1.selectedIndex].text;
+                var interfacen2 = document.getElementById("sint4n2");
+                var intn2 = interfacen2.options[interfacen2.selectedIndex].text;
+                if (add.length == 0) {
+                    td1.innerText = "interface " + int + intn1 + "/" + intn2 + "\nno shutdown";
+                } else {
+                    td1.innerText = "interface " + int + intn1 + "/" + intn2 + "\nip address " + add + " " + mask + "\nno shutdown";
+                }
+            }
+            
+            row.appendChild(td1);
+            var td2 = document.createElement("td");
+            var dButton = document.createElement("button");
+            dButton.className += " button";
+            dButton.className += " deleteButton";
+            var trashIcon = document.createElement("i");
+            trashIcon.className += "fa fa-trash";
+            dButton.appendChild(trashIcon);
+            dButton.addEventListener('click', function () {
+                row.remove();
+                if (tshow.rows.length < 2) {
+                    initxt.innerText = "";
+                }
+            });
+            td2.appendChild(dButton);
+            row.appendChild(td2);
+
+            tshow.appendChild(row);
+        }
+
+        function add6() {
+            var initxt = document.getElementById("initxt");
+            initxt.innerText = "configure terminal\nipv6 unicast-routing"
+
+            var interface = document.getElementById("sint6");
+            var int = interface.options[interface.selectedIndex].text;
+            var interfacen1 = document.getElementById("sint6n1");
+            var intn1 = interfacen1.options[interfacen1.selectedIndex].text;
+            var interfacen2 = document.getElementById("sint6n2");
+            var intn2 = interfacen2.options[interfacen2.selectedIndex].text;
+            var add = document.getElementById("ipv6add").value;
+
+            var row = document.createElement("tr");
+            row.className += " trf";
+            var td1 = document.createElement("td");
+            if (add.length == 0) {
+                td1.innerText = "interface " + int + intn1 + "/" + intn2 + "\nipv6 enable" + "\nno shutdown";
+            } else {
+                td1.innerText = "interface " + int + intn1 + "/" + intn2 + "\nipv6 enable\nipv6 address " + add + " " + "\nno shutdown";
+            }
+            row.appendChild(td1);
+            var td2 = document.createElement("td");
+            var dButton = document.createElement("button");
+            dButton.className += " button";
+            dButton.className += " deleteButton";
+            var trashIcon = document.createElement("i");
+            trashIcon.className += "fa fa-trash";
+            dButton.appendChild(trashIcon);
+            dButton.addEventListener('click', function () {
+                row.remove();
+                if (tshow.rows.length < 2) {
+                    initxt.innerText = "";
+                }
+            });
+            td2.appendChild(dButton);
+            row.appendChild(td2);
+
+            tshow.appendChild(row);
+
+        }
+
+        function opsfv2() {
+            var ospfinit = document.getElementById("ospfinit");
+            var ospfpid = document.getElementById("ospf2pid").value;
+            ospfinit.innerText = "exit"
+            ospfinit.innerText += "\nrouter ospf " + ospfpid;
+
+            var ospf2net = document.getElementById("ospf2net").value;
+            var ospf2wild = document.getElementById("ospf2wild").value;
+            var ospfaid = document.getElementById("ospf2aid").value;
+
+            var row = document.createElement("tr");
+            row.className += " trf";
+            var td1 = document.createElement("td");
+            td1.innerText = "network " + ospf2net + " " + ospf2wild + " area " + ospfaid;
+            var pintcheckbox = document.getElementById("ospf2pintcheckbox");
+            if (pintcheckbox.checked == true) {
+                var interface = document.getElementById("ospf2pint");
+                var int = interface.options[interface.selectedIndex].text;
+                var interfacen1 = document.getElementById("ospf2pintn1");
+                var intn1 = interfacen1.options[interfacen1.selectedIndex].text;
+                var interfacen2 = document.getElementById("ospf2pintn2");
+                var intn2 = interfacen2.options[interfacen2.selectedIndex].text;
+                td1.innerText = "passive-interface " + int + intn1 + "/" + intn2;
+            }
+            var ridcheckbox = document.getElementById("ospf2ridcheckbox");
+            if (ridcheckbox.checked) {
+                var rid = document.getElementById("ospf2rid").value;
+                ospfinit.innerText += "\nrouter-id " + rid;
+            }
+            row.appendChild(td1);
+            var td2 = document.createElement("td");
+            var dButton = document.createElement("button");
+            dButton.className += " button";
+            dButton.className += " deleteButton";
+            var trashIcon = document.createElement("i");
+            trashIcon.className += "fa fa-trash";
+            dButton.appendChild(trashIcon);
+            dButton.addEventListener('click', function () {
+                row.remove();
+                if (tospf.rows.length < 2) {
+                    ospfinit.innerText = "";
+                }
+            });
+            td2.appendChild(dButton);
+            row.appendChild(td2);
+
+            tospf.appendChild(row);
+        }
+
+        function ospfv3() {
+            var ospfinit = document.getElementById("ospfinit");
+            var ospfpid = document.getElementById("ospf3pid").value;
+            ospfinit.innerText = "exit"
+            ospfinit.innerText += "\nipv6 router ospf " + ospfpid;
+            var pintcheckbox = document.getElementById("ospf3pintcheckbox");
+            if (pintcheckbox.checked == true) {
+                var pinterface = document.getElementById("ospf3pint");
+                var pint = pinterface.options[pinterface.selectedIndex].text;
+                var pinterfacen1 = document.getElementById("ospf3pintn1");
+                var pintn1 = pinterfacen1.options[pinterfacen1.selectedIndex].text;
+                var pinterfacen2 = document.getElementById("ospf3pintn2");
+                var pintn2 = pinterfacen2.options[pinterfacen2.selectedIndex].text;
+                ospfinit.innerText += "\npassive-interface " + pint + pintn1 + "/" + pintn2 + "\nexit";
+            }
+
+            var interface = document.getElementById("ospf3int");
+            var int = interface.options[interface.selectedIndex].text;
+            var interfacen1 = document.getElementById("ospf3intn1");
+            var intn1 = interfacen1.options[interfacen1.selectedIndex].text;
+            var interfacen2 = document.getElementById("ospf3intn2");
+            var intn2 = interfacen2.options[interfacen2.selectedIndex].text;
+            var ospfaid = document.getElementById("ospf3aid").value;
+
+            var row = document.createElement("tr");
+            row.className += " trf";
+            var td1 = document.createElement("td");
+            td1.innerText = "interface " + int + " " + intn1 + "/" + intn2 + "\nipv6 ospf " + ospfpid + " area " + ospfaid;
+            
+            var ridcheckbox = document.getElementById("ospf2ridcheckbox");
+            if (ridcheckbox.checked) {
+                var rid = document.getElementById("ospf3rid").value;
+                td1.innerText += "\nrouter-id " + rid;
+            }
+            row.appendChild(td1);
+            var td2 = document.createElement("td");
+            var dButton = document.createElement("button");
+            dButton.className += " button";
+            dButton.className += " deleteButton";
+            var trashIcon = document.createElement("i");
+            trashIcon.className += "fa fa-trash";
+            dButton.appendChild(trashIcon);
+            dButton.addEventListener('click', function () {
+                row.remove();
+                if (tospf.rows.length < 2) {
+                    ospfinit.innerText = "";
+                }
+            });
+            td2.appendChild(dButton);
+            row.appendChild(td2);
+
+            tospf.appendChild(row);
+        }
+
+        function displayElement(checkboxid, elementid) {
+            var checkBox = document.getElementById(checkboxid);
+            var elemento = document.getElementById(elementid);
+            if (checkBox.checked) {
+                elemento.style.visibility = "visible";
+            } else {
+                elemento.style.visibility = "hidden";
+            }
+        }
+
+        function selectloop(sintid, sspanid, sspanl4) {
+            var interface = document.getElementById(sintid);
+            var int = interface.options[interface.selectedIndex].text;
+            var sspan = document.getElementById(sspanid);
+            var sspanl = document.getElementById(sspanl4);
+            if (int.localeCompare("Loopback") == 0) {
+                sspan.style.display = "none";
+                sspanl.style.display = "inline";
+            } else {
+                sspan.style.display = "inline";
+                sspanl.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

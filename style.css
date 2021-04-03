@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button {
+    border-radius: 0.3em;
+    padding: 0.8em 1.6em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.addButton {
+    background-color: black;
+    border: 0.1em solid black;
+    color: white;
+}
+
+.addButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.containera {
+    background-color: #f9f6f7;
+    margin: 1% 0 1% 0;
+    border-radius: 5px;
+    padding: 1.5%;
+}
+
+.deleteButton {
+    background-color: red;
+    border: 0.1em solid red;
+    color: white;
+    padding: 0.5em 1em;
+}
+
+.deleteButton:hover {
+    background-color: white;
+    color: red;
+}
+
+.setup {
+    flex: 50%;
+}
+
+.sdiv {
+    margin: 2.5% 2% 2.5% 2%; 
+}
+
+.show {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    margin-top: 1.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    flex: 50%;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+    .setup, .show {
+        flex: 100%;
+    }
+}
+
+.tds {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 15px;
+}
+
+.trf:hover {
+    background-color: #ffffff;
+}
+
+tr.trf>td {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+body {
+    background-color: #f6f5f5;
+}
+
+h1 {
+    color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+input {
+    padding: 5px;
+}
+
+select {
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
